@@ -319,7 +319,6 @@ const App: React.FC = () => {
                      </div>
                   </div>
                   
-                  {/* WASD Cluster Layout */}
                   <div className="flex flex-col items-center gap-2 scale-110 opacity-60">
                      <div className="flex justify-center w-full">
                         {renderKey('W')}
@@ -437,6 +436,73 @@ const App: React.FC = () => {
         </div>
 
         <HistoryList records={history} onClear={clearHistory} />
+
+        {/* 项目介绍与联系作者区域 */}
+        <section className="mt-16 w-full grid grid-cols-1 md:grid-cols-2 gap-8 border-t border-slate-800 pt-12 pb-12">
+          <div className="space-y-4">
+            <h2 className="text-xl font-black italic uppercase tracking-tighter text-emerald-400 flex items-center gap-2">
+              <i className="fas fa-info-circle"></i> 项目介绍
+            </h2>
+            <div className="bg-slate-900/30 p-6 rounded-3xl border border-slate-800/50 text-slate-400 leading-relaxed text-sm">
+              <p>
+                CS 极限急停训练器是一款专为 FPS 竞技玩家设计的肌肉记忆强化工具。它深度模拟了《反恐精英 (Counter-Strike)》系列中的 
+                <span className="text-white font-bold mx-1">Counter-Strafing</span> 机制。
+              </p>
+              <p className="mt-4">
+                核心目标是训练玩家在毫秒级时间内，完成“松开原移动键”与“按下反向平衡键”的精准同步，从而实现移动中的瞬间静止与首发精准射击。
+                通过 AI 神经反馈，帮助你突破操作瓶颈，让操作如职业选手般丝滑。
+              </p>
+            </div>
+          </div>
+          
+          <div className="space-y-4">
+            <h2 className="text-xl font-black italic uppercase tracking-tighter text-cyan-400 flex items-center gap-2">
+              <i className="fas fa-user-circle"></i> 联系作者
+            </h2>
+            <div className="bg-slate-900/30 p-6 rounded-3xl border border-slate-800/50 flex flex-col items-center sm:flex-row gap-6">
+              <div className="flex-1 space-y-4">
+                <p className="text-sm text-slate-400 leading-relaxed">
+                  如有任何功能改进建议、Bug 反馈、或想交流 CS 技术与游戏外设，欢迎添加微信。
+                </p>
+                <div className="space-y-2">
+                  <div className="text-[10px] text-slate-500 uppercase font-bold">微信号</div>
+                  <div className="flex items-center gap-2 text-white font-mono bg-slate-950 px-4 py-2.5 rounded-xl border border-slate-700 w-fit select-all hover:border-cyan-500/50 transition-colors">
+                    <i className="fab fa-weixin text-emerald-500"></i>
+                    <span>lzh__55</span>
+                  </div>
+                </div>
+              </div>
+              <div className="shrink-0">
+                <div className="p-1.5 bg-white rounded-xl shadow-[0_0_20px_rgba(34,211,238,0.2)] overflow-hidden group cursor-pointer relative">
+                  {/* 使用用户上传的二维码图片，此处引用假设已存在的路径或占位 */}
+                  <img 
+                    src="wechat_qr.png" 
+                    alt="微信二维码" 
+                    className="w-32 h-32 object-cover transition-transform duration-300 group-hover:scale-105"
+                    onError={(e) => {
+                      // 如果图片未加载，显示一个提示占位符
+                      e.currentTarget.style.display = 'none';
+                      const parent = e.currentTarget.parentElement;
+                      if (parent) {
+                        const placeholder = document.createElement('div');
+                        placeholder.className = "w-32 h-32 bg-slate-100 flex items-center justify-center text-slate-400 text-[10px] text-center p-4 font-bold";
+                        placeholder.innerText = "请确保根目录存在 wechat_qr.png";
+                        parent.appendChild(placeholder);
+                      }
+                    }}
+                  />
+                  <div className="absolute inset-0 bg-slate-950/40 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-opacity pointer-events-none">
+                    <i className="fas fa-qrcode text-white text-xl"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <footer className="mt-8 text-slate-600 text-[10px] font-mono uppercase tracking-widest text-center">
+          &copy; 2025 CS REFLEX PRO - PRECISION IS EVERYTHING
+        </footer>
       </main>
     </div>
   );

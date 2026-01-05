@@ -1,0 +1,5 @@
+{
+  "name": "CS 急停神经训练器",
+  "description": "专为 FPS 玩家设计的急停训练工具。通过实时反馈和 AI 性能分析，助你掌握 CS 中松键与反向敲击的毫秒级同步。",
+  "requestFramePermissions": []
+}
